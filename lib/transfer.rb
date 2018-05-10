@@ -12,6 +12,11 @@ class Transfer
   end
 
   def execute_transaction
+    if valid?
+      self.sender.balance -= amount
+      self.receiver.balance += amount
+      self.status = "closed"
+    end
     binding.pry
   end
 
